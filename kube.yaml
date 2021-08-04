@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog1
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      bl: web
+  template:
+    metadata:
+      labels:
+        bl: web
+    spec:
+      containers:
+      - name: blog1-contain
+        imagePullPolicy: Always
+        image: nniinima/bestest4
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-entry
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    bl: web
+  ports:
+  - port: 8080
+    targetPort: 5000
+#apiVersion: networking.k8s.io/v1beta1
+#ingressi
+#kind: Ingress
+#metadata:
+#  name: basic-ingress
+#spec:
+#  backend:
+#    serviceName: blog-entry
+#    servicePort: 5000

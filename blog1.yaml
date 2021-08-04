@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: blog1
-      image: tähänimage/jotain:1.0.0
+      image: nniinima/bestest4:latest
       ports:
         - name: http
           containerPort: 80
@@ -15,8 +15,8 @@ spec:
           containerPort: 81
       resources:
         limits:
-          cpu: 0.2
-          memory: "10Mi"
+          cpu: 1
+          memory: "250Mi"
       livenessProbe:
         httpGet:
           path: /healthz
